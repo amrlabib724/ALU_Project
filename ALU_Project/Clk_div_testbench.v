@@ -4,8 +4,7 @@ module Clk_div_testbench();
     wire Clk_out;
 
     // Instantiate the clock divider
-    Clk_div dut (.Clk(Clk), .Reset(Reset), .Clk_out(Clk_out));
-
+Clk_div #(.counter_div(25'd249_999)) dut( .Clk(Clk),.Reset(Reset),.Clk_out(Clk_out)); // 100 Hz output from 50 MHz input
     // Clock generation
     initial begin
         Clk = 0;
