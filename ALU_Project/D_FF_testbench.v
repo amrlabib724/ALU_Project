@@ -17,13 +17,12 @@ D_FF d_ff_inst (.Clk(Clk), .Reset(Reset), .D(D), .Q(Q), .Qn(Qn));
     // Input stimulus
     initial begin
         D = 0;
-        #700 D = 1; // Change D after 70 ns
-        #200 D = 0; // Change D back to 0 after another 20 ns
-        #500 D = 1; // Change D after 50 ns
-        #500 D = 0; // Change D back to 0 after another 50 ns
-        #700 D = 1; // Change D to 1 again after another 70 ns
-        #300 D = 0; // Change D back to 0 after another 30 ns
-        #700 D = 1; // Change D to 1 again after another 70 ns
+        #700 D = 1; 
+        #200 D = 0; 
+        #500 D = 0; 
+        #700 D = 1; 
+        #300 D = 0; 
+        #700 D = 1; 
     end 
     // Monitor output
     initial begin
@@ -31,6 +30,6 @@ D_FF d_ff_inst (.Clk(Clk), .Reset(Reset), .D(D), .Q(Q), .Qn(Qn));
     end 
     //Simulation time
     initial begin
-        #20000 $stop ;// Run for 20000ns
+        #20000 $stop ;
     end
 endmodule //D_ff_testbench
