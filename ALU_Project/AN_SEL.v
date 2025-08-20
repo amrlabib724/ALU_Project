@@ -5,7 +5,7 @@ output reg [1:0] sel; // 2-bit selector input
 wire slow_clk; // Internal clock signal for slower operation
 
 
-Clk_div #(.counter_div(25'd249_999)) clk_div_inst (.Clk(Clk), .Reset(Reset), .Clk_out(slow_clk)); //
+Clk_div #(.counter_div(25'd4)) clk_div_inst (.Clk(Clk), .Reset(Reset), .Clk_out(slow_clk)); //
 
 
 always @(posedge slow_clk or posedge Reset) begin
@@ -23,6 +23,7 @@ always @(posedge slow_clk or posedge Reset) begin
             2'b01: AN = 4'b1101; // Enable second 7_sig for Tens
             2'b10: AN = 4'b1011; // Enable third 7_sig for Hundreds
             2'b11: AN = 4'b0111; // Enable fourth 7_sig for Letters
+            default: AN = 4'b1111; // Disable all 7_seg
         endcase
     end
 

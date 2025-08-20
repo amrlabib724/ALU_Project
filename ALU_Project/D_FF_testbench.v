@@ -1,8 +1,11 @@
 module D_FF_testbench ();
 reg Clk, Reset, D;
-wire Q, Qn;
+wire Q, Qn ,Clk_out;
+
+Clk_div #(.counter_div(25'd4)) Clk_div_inst( .Clk(Clk),.Reset(Reset),.Clk_out(Clk_out)); // 100 Hz output from 50 MHz input
+
 // Instantiate the D flip-flop
-D_FF d_ff_inst (.Clk(Clk), .Reset(Reset), .D(D), .Q(Q), .Qn(Qn));
+D_FF d_ff_inst (.Clk(Clk_out), .Reset(Reset), .D(D), .Q(Q), .Qn(Qn));
 
   // Clock generation
     initial begin

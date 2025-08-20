@@ -1,9 +1,10 @@
 module Debouncer_testbench();
     reg Clk, Reset, pb_in;
-    wire pb_out;
+    wire pb_out, Clk_out;
 
+    Clk_div #(.counter_div(25'd4)) Clk_div_inst( .Clk(Clk),.Reset(Reset),.Clk_out(Clk_out)); // 100 Hz output from 50 MHz input
     // Instantiate the debouncer
-    Debouncer dut (.pb_in(pb_in), .Clk(Clk), .Reset(Reset), .pb_out(pb_out));
+    Debouncer dut (.pb_in(pb_in), .Clk(Clk_out), .Reset(Reset), .pb_out(pb_out));
 
     // Clock generation
     initial begin
@@ -33,7 +34,7 @@ module Debouncer_testbench();
 
     // Simulation time
     initial begin
-        #1000 $finish; // Run for 1000 ns
+        #1000 $stop; // Run for 1000 ns
     end
 
 endmodule //Debouncer

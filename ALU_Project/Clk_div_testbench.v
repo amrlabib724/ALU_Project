@@ -8,7 +8,7 @@ Clk_div #(.counter_div(25'd249_999)) dut( .Clk(Clk),.Reset(Reset),.Clk_out(Clk_o
     // Clock generation
     initial begin
         Clk = 0;
-        forever #10 Clk = ~Clk; // Period = 20ns → 50MHz
+        forever #10 Clk = ~Clk; // 50 MHz clock    
     end
 
     // Reset pulse
