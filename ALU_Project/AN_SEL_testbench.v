@@ -2,7 +2,11 @@ module AN_SEL_testbench();
 reg Clk, Reset;
 wire [3:0] AN; 
 wire [1:0] sel;
-AN_SEL uut (.Clk(Clk),.Reset(Reset),.AN(AN),.sel(sel));
+wire Clk_out;
+
+Clk_div #(.counter_div(25'd4)) Clk_div_inst( .Clk(Clk),.Reset(Reset),.Clk_out(Clk_out)); // 100 Hz output from 50 MHz input
+
+AN_SEL uut (.Clk(Clk_out),.Reset(Reset),.AN(AN),.sel(sel));
   // Clock generation
     initial begin
         Clk = 0;

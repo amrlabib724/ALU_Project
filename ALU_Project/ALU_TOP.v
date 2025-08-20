@@ -15,10 +15,6 @@ wire [7:0] sw_debounced;
 wire [3:0] seven_seg_in; 
 wire [3:0] Letters;
 wire [1:0] sel_in; 
-
-
-
-
 wire pb_a_debounced, pb_b_debounced, pb_op_debounced,reset_debounced,slow_clk;
 
 
@@ -62,7 +58,7 @@ DEC_To_BCD dec_to_bcd_inst (.BINARY(Out_with_carry),.BCD(BCD_out));
 
 
 // Instantiate AN_SEL module
-AN_SEL an_sel_inst(.Clk(Clk), .Reset(reset_debounced), .AN(AN_SEL), .sel(sel_in));
+AN_SEL an_sel_inst(.Clk(slow_clk), .Reset(reset_debounced), .AN(AN_SEL), .sel(sel_in));
 
 
 // Instantiate mux_control model
