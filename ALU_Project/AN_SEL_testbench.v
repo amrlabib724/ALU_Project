@@ -4,9 +4,9 @@ wire [3:0] AN;
 wire [1:0] sel;
 wire Clk_out;
 
-Clk_div #(.counter_div(25'd4)) Clk_div_inst( .Clk(Clk),.Reset(Reset),.Clk_out(Clk_out)); // 100 Hz output from 50 MHz input
+Clk_div #(.counter_div(25'd4)) Clk_div_inst( .Clk(Clk),.Reset(Reset),.Clk_out(Clk_out)); 
 
-AN_SEL uut (.Clk(Clk_out),.Reset(Reset),.AN(AN),.sel(sel));
+AN_SEL dut (.Clk(Clk_out),.Reset(Reset),.AN(AN),.sel(sel));
   // Clock generation
     initial begin
         Clk = 0;
