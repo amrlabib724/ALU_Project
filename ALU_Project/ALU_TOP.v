@@ -18,7 +18,7 @@ wire pb_a_debounced, pb_b_debounced, pb_op_debounced,slow_clk;
 // Clk Divider for slower clock signal
 Clk_div #(.counter_div(25'd4)) clk_div_inst (.Clk(Clk), .Reset(reset), .Clk_out(slow_clk));
 
-//Instatiate debounce modules for buttons and switches
+//Instatiate debounce modules for buttons 
 
 Debouncer pb_a_debounce (.Clk(slow_clk), .Reset(reset), .pb_in(pb_a), .pb_out(pb_a_debounced));
 Debouncer pb_b_debounce (.Clk(slow_clk), .Reset(reset), .pb_in(pb_b), .pb_out(pb_b_debounced));
