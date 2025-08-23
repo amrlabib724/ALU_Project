@@ -1,7 +1,9 @@
 module mux_4x1_control (Ones, Tens, Hundreds, Letters, AN_SEL,digit_BCD);
 input [3:0] Ones, Tens, Hundreds, Letters;
 input [1:0] AN_SEL; // 2-bit AN_SEL input
+    
 output reg [3:0] digit_BCD; // 4-bit output for BCD
+    
 always @(*) begin
     case (AN_SEL)
         2'b00: digit_BCD = Ones;      // Select Ones
