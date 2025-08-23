@@ -1,19 +1,14 @@
 module AN_SEL (Clk,Reset,AN,sel);
 input Clk, Reset;
 output reg [3:0] AN;
-output reg [1:0] sel; // 2-bit selector input
-// wire slow_clk; // Internal clock signal for slower operation
-
-
-// Clk_div #(.counter_div(25'd4)) clk_div_inst (.Clk(Clk), .Reset(Reset), .Clk_out(slow_clk)); //
-
+output reg [1:0] sel; 
 
 always @(posedge Clk or posedge Reset) begin
     if (Reset) begin
-        sel <= 2'b00; // Reset selector to 0
+        sel <= 2'b00; 
     end
     else begin
-        sel <= sel + 1; // Increment selector on each clock cycle
+        sel <= sel + 1; 
     end
     end
 
