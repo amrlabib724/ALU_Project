@@ -1,8 +1,10 @@
 module mux_4x1_control_testbench ();
+    
 reg [3:0] Ones, Tens, Hundreds, Letters,out_expected;
 reg [1:0] AN_SEL;
+    
 wire [3:0] digit_BCD;
-mux_4x1_control uut (
+mux_4x1_control dut (
     .Ones(Ones),
     .Tens(Tens),
     .Hundreds(Hundreds),
