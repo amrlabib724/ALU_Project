@@ -1,8 +1,10 @@
 module Debouncer_testbench();
     reg Clk, Reset, pb_in;
+    
     wire pb_out, Clk_out;
 
-    Clk_div #(.counter_div(25'd4)) Clk_div_inst( .Clk(Clk),.Reset(Reset),.Clk_out(Clk_out)); // 100 Hz output from 50 MHz input
+    Clk_div #(.counter_div(25'd4)) Clk_div_inst( .Clk(Clk),.Reset(Reset),.Clk_out(Clk_out)); 
+    
     // Instantiate the debouncer
     Debouncer dut (.pb_in(pb_in), .Clk(Clk_out), .Reset(Reset), .pb_out(pb_out));
 
