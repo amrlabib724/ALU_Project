@@ -1,5 +1,6 @@
 module D_FF (Clk, Reset, D, Q, Qn);
 input Clk, Reset, D;
+    
 output reg Q, Qn;
 
 always @(posedge Clk or posedge Reset) begin
