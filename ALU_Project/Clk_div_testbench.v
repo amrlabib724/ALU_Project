@@ -21,7 +21,7 @@ Clk_div #(.counter_div(25'd249_999)) dut( .Clk(Clk),.Reset(Reset),.Clk_out(Clk_o
     initial begin
         $monitor("Time: %0t ns, Clk_out: %b", $time, Clk_out);
     end
-
+    
     // Simulation time
     initial begin
         #20_000_000_00 $finish; // Run for 2 seconds
