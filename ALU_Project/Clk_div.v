@@ -4,7 +4,6 @@ module Clk_div #(parameter counter_div = 25'd249_999) (Clk,Reset,Clk_out);
 
     reg [24:0] counter; // 25-bit counter for division
 
-
     always @(posedge Clk or posedge Reset) begin
         if (Reset) begin
             counter <= 0;
