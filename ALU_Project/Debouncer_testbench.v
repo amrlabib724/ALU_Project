@@ -3,6 +3,8 @@ module Debouncer_testbench();
     
     wire pb_out, Clk_out;
 
+    integer i ;
+
     Clk_div #(.counter_div(25'd4)) Clk_div_inst( .Clk(Clk),.Reset(Reset),.Clk_out(Clk_out)); 
     
     // Instantiate the debouncer
@@ -17,16 +19,22 @@ module Debouncer_testbench();
     // Reset pulse
     initial begin
         Reset = 1;
-        #20 Reset = 0;
+        #50 Reset = 0;
     end
 
     // Input stimulus
     initial begin
-        pb_in = 0;
-        #100 pb_in = 1; // Simulate button press
-        #200 pb_in = 0; // Simulate button release
-        #300 pb_in = 1; // Simulate another button press
-        #400 pb_in = 0; // Simulate button release again
+       for (i =0 ;i<15 ;i=i+1 ) begin
+        pb_in=1;
+        #50;
+        pb_in=~pb_in;
+        #50;
+       end
+       pb_in=1;
+       #550;
+       pb_in=0;
+       #100;
+       $stop;
     end 
 
     // Monitor output
@@ -34,9 +42,5 @@ module Debouncer_testbench();
         $monitor("Time: %0t ns, pb_in: %b, pb_out: %b", $time, pb_in, pb_out);
     end 
 
-    // Simulation time
-    initial begin
-        #1000 $stop; // Run for 1000 ns
-    end
 
 endmodule //Debouncer
