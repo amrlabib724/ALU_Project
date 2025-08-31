@@ -6,6 +6,7 @@ module ALU_TOP_testbench ();
     wire [7:0] LED_tb;
     wire [3:0] AN_SEL_tb;
     wire [6:0] seven_seg_out_tb;
+    integer i;
 
     // Instantiate DUT
     ALU_TOP dut (
@@ -29,20 +30,46 @@ end
     initial begin
 
          reset_tb = 1;
-       #500 reset_tb = 0;
+       #200 reset_tb = 0;
         // Test case 1: Set A
-        pb_a_tb = 1; pb_b_tb = 0; pb_op_tb = 0; 
+        pb_b_tb = 0; pb_op_tb = 0; 
         sw_tb = 8'b00001111; // Set A to 15
-        #500 pb_a_tb = 0; 
+        for (i =0 ;i<15 ;i=i+1 ) begin
+        pb_a_tb=1;
+        #20;
+        pb_a_tb=~pb_a_tb;
+        #20;
+       end
+        pb_a_tb=1;
+       #550;
+        pb_a_tb = 0; 
          // Test case 2: Set B
-        pb_a_tb = 0; pb_b_tb = 1; pb_op_tb = 0; 
+        #500 ;
         sw_tb= 8'b00000101; // Set B to 5
-        #500 pb_b_tb = 0; 
+        #20;
+        for (i =0 ;i<15 ;i=i+1 ) begin
+        pb_b_tb=1;
+        #20;
+        pb_b_tb=~pb_b_tb;
+        #20;
+       end
+       pb_b_tb=1;
+       #500;
+        pb_b_tb = 0; 
         // Test case 3: Perform addition
-          pb_a_tb = 0; pb_b_tb = 0; pb_op_tb = 1; 
-        sw_tb= 8'b000000001; // Set operation to addition
-        #500 pb_op_tb = 0; 
-                
+        #500
+        sw_tb= 8'b000000001; // Set operation to additio
+        #20;
+          for (i =0 ;i<15 ;i=i+1 ) begin
+        pb_op_tb=1;
+        #20;
+        pb_op_tb=~pb_op_tb;
+        #20;
+       end
+       pb_op_tb=1;
+       #550;
+       pb_op_tb = 0; 
+        #2000    
         $stop;
     end
 
